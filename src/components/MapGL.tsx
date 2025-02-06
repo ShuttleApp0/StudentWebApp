@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Map, { GeolocateControl, Marker } from 'react-map-gl/mapbox';
+import Map, { GeolocateControl, Marker, FlyToInterpolator  } from 'react-map-gl/mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { SearchBox } from '@mapbox/search-js-react';
+// import { SearchBox } from '@mapbox/search-js-react';
+
 
 
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidGhlbG9jYWxnb2RkIiwiYSI6ImNtMm9ocHFhYTBmczQya3NnczhoampiZ3gifQ.lPNutwk6XRi_kH_1R1ebiw';
@@ -13,6 +14,8 @@ function MapGL({ selectedLocation  }) {
     longitude: -1.573568,
     latitude: 6.678045,
     zoom: 13.85,
+    // transitionDuration: 3000, 
+    // transitionInterpolator: new FlyToInterpolator(),
   });
 
   const [markers, setMarkers] = useState([]);

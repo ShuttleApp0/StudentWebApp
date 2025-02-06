@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import MapGl from '../components/MapGL';
+// import { FlyToInterpolator } from 'react-map-gl';
+import useMediaQuery from '../components/useMediaQuery';
+
 
 function Home() {
+
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
   interface Location {
     id: string;
     name: string;
@@ -29,7 +35,6 @@ function Home() {
 
   const handleLocationClick = (location: Location) => {
     setSelectedLocation(location)
-    console.log(selectedLocation)
   }
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,7 +61,7 @@ function Home() {
         borderWidth: 1,
         flexDirection : 'column',
         overflowY : 'auto',
-        maxHeight : 'calc(100vh - 220px)',
+        maxHeight : isMobile ? 300 : 'calc(100vh - 220px)',
         width : '330',
         justifyContent : 'flex-start' ,
         
@@ -113,7 +118,7 @@ function Home() {
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <p style={{ fontSize: 14, margin: 0 }}>{location.name}</p>
-                <p style={{ fontSize: 12, margin: 0 }}>{location.description}</p>
+                <p style={{ fontSize: 12, margin: 0, color : 'rgba(0,0,0,0.6)' }}>{location.description}</p>
               </div>
             </div>
           ))
@@ -134,26 +139,32 @@ function Home() {
         width: '100%',
         borderRadius: 24,
         height: 'auto',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        flexDirection: isMobile ? 'column' : 'row',
+
       }}>
         <div style={{
           display: 'flex',
           paddingInline: 16,
           paddingBlock: 16,
           backgroundColor: 'white',
-          marginLeft: 16,
+          // marginLeft: 16,
           borderRadius: 24,
           gap: 16,
           flexDirection: 'column',
-          width: 340,
-          minHeight: 'auto',
-          height: 'auto',
+          width: isMobile ? '90%' : 340,
+          minHeight: isMobile ? 300 : 'auto',
+          height: isMobile ? 300 : 'auto',
           zIndex: 11111,
           marginTop: 12,
           border: '1px solid rgba(0,0,0,0.1)',
+          margin: isMobile ? '16px auto' : '16px 16px 16px 0',
+          position : 'fixed',
+          bottom : isMobile ? 10 : ''
+
         }}>
           <p style={{ fontSize: 20, fontWeight: '700', margin: 0 }}>
-            Welcome to <br />
+            Welcome to KNUST <br />
             <span style={{ fontSize: 20, color: '#34A853', fontWeight: '400' }}>Shuttle<span style={{ fontWeight: '400', color: '#FFCE31' }}>App</span></span>
           </p>
 
