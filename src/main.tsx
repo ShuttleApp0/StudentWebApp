@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
   <Router>  {/* Wrapping your app with Router */}
     <Routes>  {/* Define Routes here */}
-      <Route path="/" element={<Home />} />  {/* Set up route for Home page */}
+      <Route path="/" element={<Home />} />  
     </Routes>
   </Router>
 );
