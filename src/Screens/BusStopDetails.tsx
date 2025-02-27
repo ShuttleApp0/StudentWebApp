@@ -25,16 +25,157 @@ function BusStopDetails() {
   }
 
   const locations = [
-    { id: '1', name: 'Main Library', description: 'On Campus', latitude: 6.675033566213408, longitude: -1.5723546778455368 },
-    { id: '2', name: 'Gaza', description: 'Off Campus', latitude: 6.687618867462474, longitude: -1.5570359730017378 },
-    { id: '3', name: 'Medical Village', description: 'Hub for student activities', latitude: 6.6800787890749245, longitude: -1.549747261104641 },
-    { id: '4', name: 'Pharmacy Busstop', description: 'On Campus', latitude: 6.67480379472123, longitude: -1.5663873751176354 },
-    { id: '5', name: 'Pentecost Busstop', description: 'On Campus', latitude: 6.674545299373284, longitude: -1.5675650457295751 },
-    { id: '6', name: 'SRC Busstop', description: 'On Campus', latitude: 6.675223889340042, longitude: -1.5678831412482812 },
-    { id: '7', name: 'KSB', description: 'Hub for student activities', latitude: 6.669314250173885, longitude: -1.567181795001016 },
-    { id: '8', name: 'Brunei', description: 'Hub for student activities', latitude: 6.670465091472612, longitude: -1.5741574445526254 },
-    { id: '9', name: 'Hall 7', description: 'Hub for student activities', latitude: 6.679295619563862, longitude: -1.572807677030472 },
-    { id: '10', name: 'Conti Busstop', description: 'Hub for student activities', latitude: 6.679644223364716, longitude: -1.572967657880401 },
+    { id: '1', name: 'Main Library', description: 'On Campus', latitude: 6.675033566213408, longitude: -1.5723546778455368,
+      dropPoints : [ 
+          {
+            name: 'Brunei', latitude: 6.670465091472612, longitude: -1.5741574445526254
+          },
+          {
+            name: 'Main Library',  latitude: 6.675033566213408, longitude: -1.5723546778455368,
+          },
+          {
+            name: 'Pentecost Busstop', latitude: 6.674545299373284, longitude: -1.5675650457295751
+          },
+          {
+            name: 'KSB', latitude: 6.669314250173885, longitude: -1.567181795001016
+          }
+       ]
+     },
+     
+    { id: '2', name: 'Gaza', description: 'Off Campus', latitude: 6.687618867462474, longitude: -1.5570359730017378, 
+      dropPoints : [ 
+        {
+          name: 'Pharmacy Busstop',  latitude: 6.67480379472123, longitude: -1.5663873751176354
+        },
+        {
+          name: 'Gaza', latitude: 6.687618867462474, longitude: -1.5570359730017378,        },
+        {
+          name: 'Medical Village', latitude: 6.6800787890749245, longitude: -1.549747261104641
+        },
+     ]
+    },
+
+    { id: '3', name: 'Medical Village', description: 'Hub for student activities', latitude: 6.6800787890749245, longitude: -1.549747261104641,   
+      dropPoints : [ 
+      {
+        name: 'Pharmacy Busstop', description: 'On Campus', latitude: 6.67480379472123, longitude: -1.5663873751176354
+      },
+      {
+        name: 'Gaza', latitude: 6.687618867462474, longitude: -1.5570359730017378,
+      },
+   ] 
+  },
+
+    { id: '4', name: 'Pharmacy Busstop', description: 'On Campus', latitude: 6.67480379472123, longitude: -1.5663873751176354,
+      dropPoints : [ 
+        {
+          name: 'Medical Village', latitude: 6.6800787890749245, longitude: -1.549747261104641
+        },
+        {
+          name: 'Gaza', latitude: 6.687618867462474, longitude: -1.5570359730017378,
+        },
+     ] 
+     },
+
+    { id: '5', name: 'Pentecost Busstop', description: 'On Campus', latitude: 6.674545299373284, longitude: -1.5675650457295751,
+      dropPoints : [ 
+        {
+          name: 'KSB', latitude: 6.669314250173885, longitude: -1.567181795001016
+        },
+      
+     ] 
+    },
+
+    { id: '6', name: 'SRC Busstop', description: 'On Campus', latitude: 6.675223889340042, longitude: -1.5678831412482812, 
+      dropPoints : [ 
+        {
+          name: 'Brunei', latitude: 6.670465091472612, longitude: -1.5741574445526254
+        },
+        {
+          name: 'Main Library', latitude: 6.675033566213408, longitude: -1.5723546778455368,
+        },
+        {
+          name: 'Conti Busstop', latitude: 6.679644223364716, longitude: -1.572967657880401
+        },
+        {
+          name: 'Bomso Busstop', latitude: 6.682756553904525, longitude:-1.576990347851461
+        },
+     ] 
+    },
+
+
+    { id: '7', name: 'KSB', description: 'Hub for student activities', latitude: 6.669314250173885, longitude: -1.567181795001016,
+      dropPoints : [ 
+        {
+          name: 'Brunei', latitude: 6.670465091472612, longitude: -1.5741574445526254
+        },
+        {
+          name: 'Main Library', latitude: 6.675033566213408, longitude: -1.5723546778455368,
+        },
+        {
+          name: 'Conti Busstop', latitude: 6.679644223364716, longitude: -1.572967657880401
+        },
+        {
+          name: 'Bomso Busstop', latitude: 6.682756553904525, longitude:-1.576990347851461
+        },
+        {
+          name: 'SRC Busstop', latitude: 6.675223889340042, longitude: -1.5678831412482812, 
+        },
+        {
+          name: 'Conti Busstop', latitude: 6.679644223364716, longitude: -1.572967657880401
+        }
+     ] 
+     },
+    { id: '8', name: 'Brunei', description: 'Hub for student activities', latitude: 6.670465091472612, longitude: -1.5741574445526254, 
+      dropPoints : [ 
+        {
+          name: 'Main Library', latitude: 6.675033566213408, longitude: -1.5723546778455368,
+        },
+        {
+          name: 'SRC Busstop', latitude: 6.675223889340042, longitude: -1.5678831412482812, 
+        },
+        {
+          name: 'KSB', latitude: 6.669314250173885, longitude: -1.567181795001016
+        }
+     ] 
+     },
+
+    { id: '9', name: 'Hall 7', description: 'Hub for student activities', latitude: 6.679295619563862, longitude: -1.572807677030472, 
+      dropPoints : [ 
+        {
+          name: 'Main Library', latitude: 6.675033566213408, longitude: -1.5723546778455368,
+        },
+        {
+          name: 'Pentecost Busstop', latitude: 6.674545299373284, longitude: -1.567565045729575 
+        },
+        {
+          name: 'KSB', latitude: 6.669314250173885, longitude: -1.567181795001016
+        }
+     ]
+     },
+    { id: '10', name: 'Conti Busstop', description: 'Hub for student activities', latitude: 6.679644223364716, longitude: -1.572967657880401, 
+      dropPoints : [ 
+        {
+          name: 'Pentecost Busstop', latitude: 6.674545299373284, longitude: -1.567565045729575
+        },
+        {
+          name: 'KSB', latitude: 6.669314250173885, longitude: -1.567181795001016
+        }
+     ]
+     },
+    { id: '11', name: 'Bomso Busstop', description: 'Hub for student activities', latitude: 6.682756553904525, longitude:-1.576990347851461, 
+      dropPoints : [ 
+        {
+          name: 'Conti Busstop', latitude: 6.679644223364716, longitude: -1.572967657880401
+        },
+        {
+          name: 'Pentecost Busstop', latitude: 6.674545299373284, longitude: -1.567565045729575 
+        },
+        {
+          name: 'KSB', latitude: 6.669314250173885, longitude: -1.567181795001016
+        }
+     ]
+     },
   ];
 
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null)
@@ -185,173 +326,66 @@ function BusStopDetails() {
             </div>
 
             <div style={{
-              display : 'flex',
-              borderRadius : 16,
+              display: 'flex',
+              borderRadius: 16,
               border: '1px solid rgba(0,0,0,0.1)',
-              paddingInline : 16,
-              paddingBlock : 12,
-              flexDirection : 'column',
-              gap : 16
+              paddingInline: 16,
+              paddingBlock: 12,
+              flexDirection: 'column',
+              gap: 16
             }}>
+              <p style={{
+                margin: 0,
+                fontSize: 14,
+                fontWeight: '700'
+              }}>Bus Stops</p>
 
-                  <p style={{
-                    margin : 0,
-                    fontSize : 14,
-                    fontWeight : '700'
-                  }}>Bus Stops</p>
-
-                  <div style={{
-                    display : 'flex',
-                    flexDirection : 'column',
-                    gap : 8
-                  }}>
-
-                    
-                  <div style={{
-                    display : 'flex',
-                    alignItems : 'center',
-                    justifyContent : 'space-between'
-                  }}>
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 8
+              }}>
+                {selectedLocation?.dropPoints?.map((dropPoint, index) => (
+                  <div key={dropPoint.name}>
                     <div style={{
-                       display : 'flex',
-                       alignItems : 'center',
-                       gap : 12
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between'
                     }}>
-
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z" fill="#4285F4CC"/>
-                </svg>
-
-                    <p style={{
-                      margin : 0,
-                      fontSize : 12,
-                      color : 'rgba(0,0,0,0.6)'
-                    }}>Central Bus stop</p>
-    
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 12
+                      }}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                          <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z" fill="#4285F4CC"/>
+                        </svg>
+                        <p style={{
+                          margin: 0,
+                          fontSize: 12,
+                          color: 'rgba(0,0,0,0.6)'
+                        }}>{dropPoint.name}</p>
+                      </div>
+                      <p style={{
+                        margin: 0,
+                        fontSize: 12,
+                        color: 'rgba(0,0,0,0.6)'
+                      }}>7:32</p> {/* Replace with dynamic time if available */}
                     </div>
 
-                    <p style={{
-                      margin : 0,
-                      fontSize : 12,
-                      color : 'rgba(0,0,0,0.6)'
-                    }}>7:32</p>
-
+                    {index < selectedLocation.dropPoints.length - 1 && (
+                      <div style={{
+                        height: 16,
+                        width: 2,
+                        backgroundColor: '#689DF6',
+                        marginLeft: '2%',
+                        marginTop : '2%'
+                      }}></div>
+                    )}
                   </div>
-
-                  <div style={{
-                    height : 16 ,
-                    width : 2,
-                    backgroundColor : '#689DF6',
-                    marginLeft : '2%'
-                  }}></div>
-
-
-<div style={{
-                    display : 'flex',
-                    alignItems : 'center',
-                    justifyContent : 'space-between'
-                  }}>
-                    <div style={{
-                       display : 'flex',
-                       alignItems : 'center',
-                       gap : 12
-                    }}>
-
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z" fill="#4285F4CC"/>
-                </svg>
-
-                    <p style={{
-                      margin : 0,
-                      fontSize : 12,
-                      color : 'rgba(0,0,0,0.6)'
-                    }}>Hall 7 Bus stop</p>
-    
-                    </div>
-
-                    <p style={{
-                      margin : 0,
-                      fontSize : 12,
-                      color : 'rgba(0,0,0,0.6)'
-                    }}>7:32</p>
-
-                  </div>
-
-                  <div style={{
-                    height : 16 ,
-                    width : 2,
-                    backgroundColor : '#689DF6',
-                    marginLeft : '2%'
-                  }}></div>
-
-
-<div style={{
-                    display : 'flex',
-                    alignItems : 'center',
-                    justifyContent : 'space-between'
-                  }}>
-                    <div style={{
-                       display : 'flex',
-                       alignItems : 'center',
-                       gap : 12
-                    }}>
-
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z" fill="#4285F4CC"/>
-                </svg>
-
-                    <p style={{
-                      margin : 0,
-                      fontSize : 12,
-                      color : 'rgba(0,0,0,0.6)'
-                    }}>Casley Hayford Bus stop</p>
-    
-                    </div>
-
-                    <p style={{
-                      margin : 0,
-                      fontSize : 12,
-                      color : 'rgba(0,0,0,0.6)'
-                    }}>7:32</p>
-
-                  </div>
-
-                  <div style={{
-                    height : 16 ,
-                    width : 2,
-                    backgroundColor : '#689DF6',
-                    marginLeft : '2%'
-                  }}></div>
-
-                  <div style={{
-                       display : 'flex',
-                       alignItems : 'center',
-                       gap : 12
-                    }}>
-
-                    <div style={{
-                      width : 12,
-                      height : 12,
-                      border :'1px solid rgba(0,0,0,0.2)',
-                      borderRadius : 50
-                    }}></div>
-
-                    <p style={{
-                      margin : 0,
-                      fontSize : 12,
-                      color : 'rgba(0,0,0,0.6)'
-                    }}>KSB</p>
-    
-                    </div>
-                  
-
-
-                  </div>
-
-             
-          
+                ))}
             </div>
-
+          </div>
         </div>
 
         <MapGl selectedLocation={selectedLocation}/>
