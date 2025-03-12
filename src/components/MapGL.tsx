@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import Map, { Marker, Source, Layer } from 'react-map-gl/mapbox';
+import React, { useState, useEffect, useRef } from 'react';
+import Map, { Marker, Source, Layer, GeolocateControl } from 'react-map-gl/mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { solveTSP } from './../components/solveTSP'; // Custom TSP solver (see below)
 
@@ -48,6 +48,10 @@ function MapGL({
   });
 
   const [route, setRoute] = useState<Route | null>(null);
+  const [userLocation, setUserLocation] = useState<Coordinates | null>(null);
+
+  // Ref to access the GeolocateControl instance
+  const geolocateControlRef = useRef<any>(null);
 
   useEffect(() => {
     // Set the map view to the selected location (homepage) or pick-up point (details page)
@@ -133,6 +137,67 @@ function MapGL({
     </svg>
   );
 
+  // Custom Location Icon
+  const LocationIcon = () => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="72"
+      height="72"
+      viewBox="0 0 72 72"
+      fill="none"
+    >
+      <g filter="url(#filter0_d_723_117)">
+        <path
+          d="M18.3223 53.6777C28.0854 63.4408 43.9146 63.4408 53.6777 53.6777C63.4408 43.9146 63.4408 28.0854 53.6777 18.3223C43.9146 8.55921 28.0854 8.55921 18.3223 18.3223C8.55922 28.0854 8.55922 43.9146 18.3223 53.6777Z"
+          fill="white"
+          fillOpacity="0.6"
+          shapeRendering="crispEdges"
+        />
+      </g>
+      <path
+        d="M22.8723 39.4662C21.0235 38.9073 20.7436 36.3888 22.4413 35.588L43.5073 25.6507C45.2671 24.8206 47.1794 26.733 46.3493 28.4927L36.412 49.5587C35.6112 51.2564 33.0927 50.9765 32.5338 49.1276L30.802 43.3989C30.4846 42.3488 29.6513 41.5154 28.6012 41.198L22.8723 39.4662Z"
+        fill="black"
+      />
+      <defs>
+        <filter
+          id="filter0_d_723_117"
+          x="6"
+          y="7"
+          width="60"
+          height="60"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="1" />
+          <feGaussianBlur stdDeviation="2.5" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_723_117"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_723_117"
+            result="shape"
+          />
+        </filter>
+      </defs>
+    </svg>
+  );
+
   return (
     <Map
       mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
@@ -205,6 +270,45 @@ function MapGL({
           )}
         </>
       )}
+
+      {/* Add GeolocateControl to the map (hidden by default) */}
+      <GeolocateControl
+        ref={geolocateControlRef}
+        positionOptions={{ enableHighAccuracy: true }}
+        trackUserLocation={true}
+        showAccuracyCircle={true}
+        showUserLocation={true}
+        onGeolocate={(position) => {
+          setUserLocation({
+            longitude: position.coords.longitude,
+            latitude: position.coords.latitude,
+          });
+        }}
+        style={{ display: 'none' }} // Hide the default button
+      />
+
+      {/* Custom button to trigger GeolocateControl */}
+      <button
+        onClick={() => geolocateControlRef.current?.trigger()} // Trigger geolocation
+        style={{
+          position: 'absolute',
+          top: '10px',
+          right: '10px',
+          backgroundColor: 'white',
+          border: 'none',
+          borderRadius: '50%',
+          padding: '10px',
+          cursor: 'pointer',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '48px', // Adjust size to fit the icon
+          height: '48px', // Adjust size to fit the icon
+        }}
+      >
+        <LocationIcon />
+      </button>
     </Map>
   );
 }

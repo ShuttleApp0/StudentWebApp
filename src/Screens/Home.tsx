@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MapGl from '../components/MapGL';
 // import { FlyToInterpolator } from 'react-map-gl';
 import useMediaQuery from '../components/useMediaQuery';
@@ -8,9 +8,31 @@ import useGeolocation from '../../hooks/useGeolocation'
 
 function Home() {
 
+  const BASE_CUSTOMER_URL = "http://shuttle-backend-0.onrender.com/api/v1";
+
   const { loaded, coordinates, error } = useGeolocation();
 
   // console.log('so', coordinates)
+  useEffect(() => {
+    const fetchDrivers = async () => {
+      try {
+        const response = await fetch(`${BASE_CUSTOMER_URL}/drivers`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch orders');
+        }
+        
+        const data = await response.json();
+    
+        console.log(data)
+      } catch (err) {
+        console.error("Error fetching orders:", err);
+      }
+    }
+
+    fetchDrivers();
+    
+  }, []);
 
   const isMobile = useMediaQuery('(max-width: 768px)');
   const navigate = useNavigate();
@@ -40,7 +62,7 @@ function Home() {
     },
     { id: '2', name: 'Brunei', description: 'Hub for student activities', latitude: 6.670465091472612, longitude: -1.5741574445526254, 
       dropPoints: [ 
-        { name: 'SRC Busstop', latitude: 6.675223889340042, longitude: -1.5678831412482812 },
+        // { name: 'SRC Busstop', latitude: 6.675223889340042, longitude: -1.5678831412482812 },
         { name: 'Main Library', latitude: 6.675033566213408, longitude: -1.5723546778455368 },
         { name: 'KSB', latitude: 6.669314250173885, longitude: -1.567181795001016 },
         { name: 'Pentecost Busstop', latitude: 6.674545299373284, longitude: -1.567565045729575 },
@@ -87,10 +109,10 @@ function Home() {
     },
     { id: '8', name: 'Pentecost Busstop', description: 'On Campus', latitude: 6.674545299373284, longitude: -1.5675650457295751,
       dropPoints: [ 
-        { name: 'Paa Joe Round About', latitude: 6.675187511866504, longitude: -1.570775090040308 },
-        { name: 'Hall 7', latitude: 6.679295619563862, longitude: -1.572807677030472 },
+        // { name: 'Paa Joe Round About', latitude: 6.675187511866504, longitude: -1.570775090040308 },
+        // { name: 'Hall 7', latitude: 6.679295619563862, longitude: -1.572807677030472 },
         { name: 'KSB', latitude: 6.669314250173885, longitude: -1.567181795001016 },
-        { name: 'Main Library', latitude: 6.675033566213408, longitude: -1.5723546778455368 },
+        // { name: 'Main Library', latitude: 6.675033566213408, longitude: -1.5723546778455368 },
         { name: 'Pentecost Busstop', latitude: 6.674545299373284, longitude: -1.567565045729575 }
       ] 
     },
@@ -128,7 +150,7 @@ function Home() {
   // Sort the locations array alphabetically by the `name` property
   locations.sort((a, b) => a.name.localeCompare(b.name));
   
-  console.log(locations);
+  // console.log(locations);
 
 
   
