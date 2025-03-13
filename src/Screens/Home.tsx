@@ -71,10 +71,11 @@ function Home() {
     },
     { id: '3', name: 'Commercial Area', description: 'On Campus', latitude: 6.682751297721754, longitude: -1.5769726260262382,
       dropPoints: [ 
+        { name: 'Hall 7', latitude: 6.679295619563862, longitude: -1.572807677030472 },
         { name: 'Pentecost Busstop', latitude: 6.674545299373284, longitude: -1.5675650457295751 },
         { name: 'KSB', latitude: 6.669314250173885, longitude: -1.567181795001016 },
-        { name: 'SRC Busstop', latitude: 6.675223889340042, longitude: -1.5678831412482812 },
-        { name: 'Conti Busstop', latitude: 6.679644223364716, longitude: -1.572967657880401 },
+        // { name: 'SRC Busstop', latitude: 6.675223889340042, longitude: -1.5678831412482812 },
+        // { name: 'Conti Busstop', latitude: 6.679644223364716, longitude: -1.572967657880401 },
         { name: 'Commerical Area', latitude: 6.682751297721754, longitude: -1.5769726260262382, },
       ]
     },

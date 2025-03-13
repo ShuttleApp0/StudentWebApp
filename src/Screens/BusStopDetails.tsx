@@ -64,6 +64,7 @@ function BusStopDetails() {
         { name: 'Pentecost Busstop', latitude: 6.674545299373284, longitude: -1.567565045729575 },
         { name: 'KSB', latitude: 6.669314250173885, longitude: -1.567181795001016 },
         { name: 'Paa Joe Round About', latitude: 6.678596454119355, longitude: -1.5709606375024159 },
+        { name: 'Commerical Area', latitude: 6.682751297721754, longitude: -1.5769726260262382, },
         { name: 'Hall 7', latitude: 6.679295619563862, longitude: -1.572807677030472 }
       ]
     },
@@ -111,6 +112,7 @@ function BusStopDetails() {
       dropPoints: [ 
         { name: 'Brunei', latitude: 6.670465091472612, longitude: -1.5741574445526254 },
         { name: 'Main Library', latitude: 6.675033566213408, longitude: -1.5723546778455368 },
+        { name: 'Hall 7', latitude: 6.679295619563862, longitude: -1.572807677030472 },
         { name: 'Conti Busstop', latitude: 6.679644223364716, longitude: -1.572967657880401 },
         { name: 'Commercial Area', latitude: 6.682756553904525, longitude: -1.576990347851461 },
         { name: 'Pentecost Busstop', latitude: 6.674545299373284, longitude: -1.567565045729575 },
@@ -230,6 +232,11 @@ function BusStopDetails() {
       if (pickUp.name === 'Commercial Area' && dropOff.name === 'Pentecost Busstop') {
         updatedBusStop.dropPoints = updatedBusStop.dropPoints.filter(
           (dropPoint) => dropPoint.name !== 'Main Library' && dropPoint.name !== 'Main Library' && dropPoint.name !== 'Conti Busstop' && dropPoint.name !== 'Brunei'  && dropPoint.name !== 'Conti Busstop' && dropPoint.name !== 'KSB'
+        );
+      } 
+      if (pickUp.name === 'Commercial Area' && dropOff.name === 'Hall 7') {
+        updatedBusStop.dropPoints = updatedBusStop.dropPoints.filter(
+          (dropPoint) => dropPoint.name !== 'Main Library' && dropPoint.name !== 'Pentecost Busstop' && dropPoint.name !== 'Conti Busstop' && dropPoint.name !== 'Brunei'  && dropPoint.name !== 'Conti Busstop' && dropPoint.name !== 'KSB' && dropPoint.name !== 'Paa Joe Round About'
         );
       } 
 
