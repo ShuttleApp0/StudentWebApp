@@ -1,9 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Map, { Marker, Source, Layer, GeolocateControl } from 'react-map-gl/mapbox';
-import 'mapbox-gl/dist/mapbox-gl.css';
-import { solveTSP } from './../components/solveTSP'; // Custom TSP solver (see below)
+import React, { useState, useEffect, useRef } from "react";
+import Map, {
+  Marker,
+  Source,
+  Layer,
+  GeolocateControl,
+} from "react-map-gl/mapbox";
+import "mapbox-gl/dist/mapbox-gl.css";
+import { solveTSP } from "./../components/solveTSP"; // Custom TSP solver (see below)
 
-const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidGhlbG9jYWxnb2RkIiwiYSI6ImNtMm9ocHFhYTBmczQya3NnczhoampiZ3gifQ.lPNutwk6XRi_kH_1R1ebiw';
+const MAPBOX_ACCESS_TOKEN =
+  "pk.eyJ1IjoidGhlbG9jYWxnb2RkIiwiYSI6ImNtMm9ocHFhYTBmczQya3NnczhoampiZ3gifQ.lPNutwk6XRi_kH_1R1ebiw";
 
 interface Coordinates {
   longitude: number;
@@ -82,7 +88,13 @@ function MapGL({
       // Fetch the route with the optimal waypoints
       fetchRouteWithWaypoints(optimalWaypoints, setRoute);
     }
-  }, [selectedLocation, dropOffLocation, isHomepage, pickUpLocation, dropPoints]);
+  }, [
+    selectedLocation,
+    dropOffLocation,
+    isHomepage,
+    pickUpLocation,
+    dropPoints,
+  ]);
 
   const fetchRouteWithWaypoints = async (
     waypoints: Coordinates[],
@@ -91,7 +103,7 @@ function MapGL({
     // Construct the URL with all waypoints
     const coordinates = waypoints
       .map((point) => `${point.longitude},${point.latitude}`)
-      .join(';');
+      .join(";");
     const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinates}?geometries=geojson&access_token=${MAPBOX_ACCESS_TOKEN}`;
 
     try {
@@ -108,7 +120,7 @@ function MapGL({
         });
       }
     } catch (error) {
-      console.error('Error fetching route:', error);
+      console.error("Error fetching route:", error);
     }
   };
 
@@ -122,12 +134,31 @@ function MapGL({
       fill="none"
     >
       <g clipPath="url(#clip0_706_132)">
-        <path d="M21 42C21 38.6863 18.3137 36 15 36C11.6863 36 9 38.6863 9 42C9 45.3137 11.6863 48 15 48C18.3137 48 21 45.3137 21 42Z" fill="white" />
-        <path d="M19 42C19 39.7909 17.2091 38 15 38C12.7909 38 11 39.7909 11 42C11 44.2091 12.7909 46 15 46C17.2091 46 19 44.2091 19 42Z" fill="white" />
-        <path d="M19 42C19 39.7909 17.2091 38 15 38C12.7909 38 11 39.7909 11 42C11 44.2091 12.7909 46 15 46C17.2091 46 19 44.2091 19 42Z" stroke={color} strokeWidth="2" />
-        <path d="M16 28C16 27.4477 15.5523 27 15 27C14.4477 27 14 27.4477 14 28V42C14 42.5523 14.4477 43 15 43C15.5523 43 16 42.5523 16 42V28Z" fill="black" />
-        <path d="M30 15C30 6.71573 23.2843 0 15 0C6.71573 0 0 6.71573 0 15C0 23.2843 6.71573 30 15 30C23.2843 30 30 23.2843 30 15Z" fill={color} />
-        <path d="M21 15C21 11.6863 18.3137 9 15 9C11.6863 9 9 11.6863 9 15C9 18.3137 11.6863 21 15 21C18.3137 21 21 18.3137 21 15Z" fill="white" />
+        <path
+          d="M21 42C21 38.6863 18.3137 36 15 36C11.6863 36 9 38.6863 9 42C9 45.3137 11.6863 48 15 48C18.3137 48 21 45.3137 21 42Z"
+          fill="white"
+        />
+        <path
+          d="M19 42C19 39.7909 17.2091 38 15 38C12.7909 38 11 39.7909 11 42C11 44.2091 12.7909 46 15 46C17.2091 46 19 44.2091 19 42Z"
+          fill="white"
+        />
+        <path
+          d="M19 42C19 39.7909 17.2091 38 15 38C12.7909 38 11 39.7909 11 42C11 44.2091 12.7909 46 15 46C17.2091 46 19 44.2091 19 42Z"
+          stroke={color}
+          strokeWidth="2"
+        />
+        <path
+          d="M16 28C16 27.4477 15.5523 27 15 27C14.4477 27 14 27.4477 14 28V42C14 42.5523 14.4477 43 15 43C15.5523 43 16 42.5523 16 42V28Z"
+          fill="black"
+        />
+        <path
+          d="M30 15C30 6.71573 23.2843 0 15 0C6.71573 0 0 6.71573 0 15C0 23.2843 6.71573 30 15 30C23.2843 30 30 23.2843 30 15Z"
+          fill={color}
+        />
+        <path
+          d="M21 15C21 11.6863 18.3137 9 15 9C11.6863 9 9 11.6863 9 15C9 18.3137 11.6863 21 15 21C18.3137 21 21 18.3137 21 15Z"
+          fill="white"
+        />
       </g>
       <defs>
         <clipPath id="clip0_706_132">
@@ -202,13 +233,16 @@ function MapGL({
     <Map
       mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
       {...viewState}
-      style={{ width: '100vw', height: '100vh', position: 'absolute' }}
+      style={{ width: "100vw", height: "100vh", position: "absolute" }}
       mapStyle="mapbox://styles/mapbox/streets-v11"
       onMove={(evt) => setViewState(evt.viewState)}
     >
       {/* Render the selected location only on the homepage */}
       {isHomepage && selectedLocation && (
-        <Marker longitude={selectedLocation.longitude} latitude={selectedLocation.latitude}>
+        <Marker
+          longitude={selectedLocation.longitude}
+          latitude={selectedLocation.latitude}
+        >
           <MarkerIcon color="#34A853" />
         </Marker>
       )}
@@ -218,30 +252,43 @@ function MapGL({
         <>
           {/* Render selected location (origin point) */}
           {selectedLocation && (
-            <Marker longitude={selectedLocation.longitude} latitude={selectedLocation.latitude}>
+            <Marker
+              longitude={selectedLocation.longitude}
+              latitude={selectedLocation.latitude}
+            >
               <MarkerIcon color="#3F51B5" />
             </Marker>
           )}
 
           {/* Marker for the pick-up point */}
           {pickUpLocation && (
-            <Marker longitude={pickUpLocation.longitude} latitude={pickUpLocation.latitude}>
+            <Marker
+              longitude={pickUpLocation.longitude}
+              latitude={pickUpLocation.latitude}
+            >
               <MarkerIcon color="#34A853" />
             </Marker>
           )}
 
           {/* Marker for the drop-off point */}
           {dropOffLocation && (
-            <Marker longitude={dropOffLocation.longitude} latitude={dropOffLocation.latitude}>
+            <Marker
+              longitude={dropOffLocation.longitude}
+              latitude={dropOffLocation.latitude}
+            >
               <MarkerIcon color="#FFCE31" />
             </Marker>
           )}
 
           {/* Render drop points (excluding Paa Joe Round About) */}
           {dropPoints
-            .filter((point) => point.name !== 'Paa Joe Round About')
+            .filter((point) => point.name !== "Paa Joe Round About")
             .map((dropPoint, index) => (
-              <Marker key={index} longitude={dropPoint.longitude} latitude={dropPoint.latitude}>
+              <Marker
+                key={index}
+                longitude={dropPoint.longitude}
+                latitude={dropPoint.latitude}
+              >
                 <MarkerIcon color="#3F51B5" />
               </Marker>
             ))}
@@ -252,7 +299,7 @@ function MapGL({
               id="route"
               type="geojson"
               data={{
-                type: 'Feature',
+                type: "Feature",
                 properties: {},
                 geometry: route.geometry,
               }}
@@ -261,9 +308,9 @@ function MapGL({
                 id="route-layer"
                 type="line"
                 paint={{
-                  'line-color': '#3F51B5',
-                  'line-width': 5,
-                  'line-opacity': 0.75,
+                  "line-color": "#3F51B5",
+                  "line-width": 5,
+                  "line-opacity": 0.75,
                 }}
               />
             </Source>
@@ -284,27 +331,27 @@ function MapGL({
             latitude: position.coords.latitude,
           });
         }}
-        style={{ display: 'none' }} // Hide the default button
+        style={{ display: "none" }} // Hide the default button
       />
 
       {/* Custom button to trigger GeolocateControl */}
       <button
         onClick={() => geolocateControlRef.current?.trigger()} // Trigger geolocation
         style={{
-          position: 'absolute',
-          top: '10px',
-          right: '10px',
-          backgroundColor: 'white',
-          border: 'none',
-          borderRadius: '50%',
-          padding: '10px',
-          cursor: 'pointer',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '48px', // Adjust size to fit the icon
-          height: '48px', // Adjust size to fit the icon
+          position: "absolute",
+          top: "10px",
+          right: "10px",
+          backgroundColor: "white",
+          border: "none",
+          borderRadius: "50%",
+          padding: "10px",
+          cursor: "pointer",
+          boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "48px", // Adjust size to fit the icon
+          height: "48px", // Adjust size to fit the icon
         }}
       >
         <LocationIcon />
